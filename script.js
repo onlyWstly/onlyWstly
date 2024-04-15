@@ -1,22 +1,23 @@
-function scrollToElement(elementSelector, instance = 0) {
-  const elements = document.querySelectorAll(elementSelector);
+document.querySelector(".myBtn").addEventListener("click", function () {
+  changeTextPlayAudioAndShowElementWithDelay();
+});
 
-  if (elements.length > instance) {
-    elements[instance].scrollIntoView({ behavior: "smooth" });
-  }
+function changeTextPlayAudioAndShowElementWithDelay() {
+  let username = document.querySelector(".inPut").value;
+  let myTxtElement = document.querySelector(".myTxt");
+  myTxtElement.innerHTML = `Cute mo ${username}`;
+  myTxtElement.style.color = "red"; // Change the color to red (you can specify any color here)
+
+  playAudio();
+  setTimeout(showHiddenElement, 1600); // Adjust the delay time in milliseconds (1600 milliseconds = 1.6 seconds)
 }
-const link1 = document.getElementById("link1");
-const link2 = document.getElementById("link2");
-const link3 = document.getElementById("link3");
 
-link1.addEventListener("click", () => {
-  scrollToElement(".header");
-});
+function playAudio() {
+  let audio = document.querySelector(".sound");
+  audio.play();
+}
 
-link2.addEventListener("click", () => {
-  scrollToElement(".header ", 1);
-});
-
-link3.addEventListener("click", () => {
-  scrollToElement(".column");
-});
+function showHiddenElement() {
+  let hiddenElement = document.querySelector(".meme");
+  hiddenElement.style.visibility = "visible";
+}
